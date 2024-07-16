@@ -13,19 +13,36 @@ const OverLayer = styled.div`
 const DialogSytled = styled.dialog`
   position: absolute;
   top: 294px;
+  background: transparent;
+  padding: 0;
+  border: 0;
+  width: 1156px;
+  display: flex;
+  justify-content: center;
+  form {
+    button {
+      position: relative;
+      top: 20px;
+      right: 60px;
+    }
+  }
 `;
 
-const ModalZoom = ({ foto }) => {
+const ModalZoom = ({ foto, aoAlterarFavorito }) => {
   return (
     <>
       {foto && (
         <>
           <OverLayer />
           <DialogSytled open={!!foto}>
-            <Imagem foto={foto} expandida={true} />
-            <p>Yess@</p>
+            <Imagem
+              foto={foto}
+              expandida={true}
+              aoAlterarFavorito={aoAlterarFavorito}
+            />
+            <p>X@</p>
             <form method="dialog">
-              <button>OK</button>
+              <button>X</button>
             </form>
           </DialogSytled>
         </>

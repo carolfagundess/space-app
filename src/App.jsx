@@ -43,6 +43,20 @@ const App = () => {
   const [fotosGaleria, setFotosGaleria] = useState(fotos);
   const [fotoSelecionada, setFotoSelecionada] = useState(null);
 
+  const aoAlterarFavorito = (foto) => {
+    setFotosGaleria(
+      fotosGaleria.map((fotosGaleria) => {
+        return {
+          ...fotosGaleria,
+          favorita:
+            fotosGaleria.id === foto.id
+              ? !foto.favorita
+              : fotosGaleria.favorita,
+        };
+      })
+    );
+  };
+
   return (
     <FundoGradiente>
       <EstilosGlobais />
@@ -57,12 +71,13 @@ const App = () => {
             />
             <Galeria
               aoFatoSelecionada={(foto) => setFotoSelecionada(foto)}
+              aoAlterarFavorito={aoAlterarFavorito}
               fotos={fotosGaleria}
             />
           </ConteudoGaleria>
         </MainContainer>
       </AppContainer>
-      <ModalZoom foto={fotoSelecionada} />
+      <ModalZoom foto={fotoSelecionada} aoAlterarFavorit={aoAlterarFavorito} />
     </FundoGradiente>
   );
 };
